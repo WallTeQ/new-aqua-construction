@@ -4,6 +4,8 @@ import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -44,13 +46,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-        <Analytics />
-      </body>
-    </html>
+    <><html lang="en" suppressHydrationWarning></html><body className={inter.className}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {/* Navbar shows on ALL pages */}
+        <Navbar />
+
+        {/* Page content */}
+        <main>{children}</main>
+
+        {/* Footer shows on ALL pages */}
+        <Footer />
+      </ThemeProvider>
+    </body></>
   )
 }
