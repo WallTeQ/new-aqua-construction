@@ -3,7 +3,8 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Building, HardHat, Wrench, ClipboardCheck, Ruler, Home } from "lucide-react"
+// 1. Rename the icon to HomeIcon
+import { Building, HardHat, Wrench, ClipboardCheck, Ruler, Home as HomeIcon } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const services = [
@@ -13,11 +14,11 @@ const services = [
     description: "Road construction, rehabilitation, drainage systems, culverts, earthworks, and site development.",
   },
   {
-    icon: Home,
+    icon: HomeIcon, // 2. Use the renamed icon here
     title: "Building Construction",
-    description:
-      "Residential, commercial, institutional buildings including schools, clinics, offices, and warehouses.",
+    description: "Residential, commercial, institutional buildings including schools, clinics, offices, and warehouses.",
   },
+  // ... rest of your services array ...
   {
     icon: Ruler,
     title: "Structural Works",
@@ -40,35 +41,16 @@ const services = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
+// ... keep your containerVariants and itemVariants here ...
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-}
-
-export default function Services() {
+// 3. CRITICAL CHANGE: Added 'default' and renamed to 'ServicesPage'
+export default function ServicesPage() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
     <section id="services" className="py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -83,20 +65,15 @@ export default function Services() {
             Comprehensive Construction <span className="text-primary">Solutions</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            From civil engineering to project management, we deliver complete infrastructure solutions tailored to your
-            needs.
+            From civil engineering to project management, we deliver complete infrastructure solutions tailored to your needs.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service) => (
-            <motion.div key={service.title} variants={itemVariants}>
+            <motion.div key={service.title}>
               <Card className="h-full group hover:shadow-lg transition-shadow border-border bg-card">
                 <CardHeader>
                   <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">

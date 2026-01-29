@@ -3,7 +3,8 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Building, HardHat, Wrench, ClipboardCheck, Ruler, Home } from "lucide-react"
+// 1. We rename 'Home' to 'HomeIcon' here to fix the "defined multiple times" error
+import { Building, HardHat, Wrench, ClipboardCheck, Ruler, Home as HomeIcon } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const services = [
@@ -13,10 +14,10 @@ const services = [
     description: "Road construction, rehabilitation, drainage systems, culverts, earthworks, and site development.",
   },
   {
-    icon: Home,
+    // 2. Use the renamed icon here
+    icon: HomeIcon, 
     title: "Building Construction",
-    description:
-      "Residential, commercial, institutional buildings including schools, clinics, offices, and warehouses.",
+    description: "Residential, commercial, institutional buildings including schools, clinics, offices, and warehouses.",
   },
   {
     icon: Ruler,
@@ -44,9 +45,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
@@ -55,20 +54,18 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.5,
-    },
+    transition: { duration: 0.5 },
   },
 }
 
-export function Services() {
+// 3. This is the Home function on line 76. It no longer conflicts with the icon above.
+export default function Home() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
     <section id="services" className="py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -88,7 +85,6 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"

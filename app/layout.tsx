@@ -3,18 +3,26 @@ import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
+import Navbar from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
+
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "New Aqualia Construction Company (NACOC) | Engineering Excellence",
   description:
     "New Aqualia Construction Company - A professionally structured construction and engineering firm delivering technically compliant, safe, and durable infrastructure solutions across Liberia.",
-  keywords: ["construction", "engineering", "Liberia", "civil engineering", "building construction", "infrastructure"],
+  keywords: [
+    "construction",
+    "engineering",
+    "Liberia",
+    "civil engineering",
+    "building construction",
+    "infrastructure",
+  ],
   authors: [{ name: "New Aqualia Construction Company" }],
   openGraph: {
     title: "New Aqualia Construction Company (NACOC)",
@@ -42,26 +50,30 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <><html lang="en" suppressHydrationWarning></html><body className={inter.className}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {/* Navbar shows on ALL pages */}
-        <Navbar />
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Navbar shows on ALL pages */}
+          <Navbar />
 
-        {/* Page content */}
-        <main>{children}</main>
+          {/* Page content */}
+          <main>{children}</main>
 
-        {/* Footer shows on ALL pages */}
-        <Footer />
-      </ThemeProvider>
-    </body></>
+          {/* Footer shows on ALL pages */}
+          <Footer />
+
+          <Analytics />
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }
