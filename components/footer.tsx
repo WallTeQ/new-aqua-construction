@@ -82,10 +82,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+             <p className="text-sm text-muted-foreground">Incorporated January 24, 2024 | Liberian-Owned</p>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} New Aqualia Construction Company. All rights reserved.
             </p>
-            <p className="text-sm text-muted-foreground">Incorporated January 24, 2024 | Liberian-Owned</p>
           </div>
         </div>
       </div>
