@@ -7,7 +7,7 @@ export function Hero() {
       {/* 1. Background Image Container */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/site.PNG" 
+          src="/site.png" 
           alt="NACOC Construction Site"
           fill
           priority
