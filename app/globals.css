@@ -130,3 +130,14 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Prevent horizontal overflow on small screens while preserving normal scrolling vertically */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Use border-box everywhere to avoid width calculations that can introduce overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
