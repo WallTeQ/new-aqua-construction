@@ -21,8 +21,8 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
-                src="/images/whatsapp-20image-202026-01-16-20at-2011.jpeg"
-                alt="NACOC Logo"
+                src="/Logo.jpeg"
+                alt="NACC Logo"
                 width={48}
                 height={48}
                 className="h-12 w-auto"
