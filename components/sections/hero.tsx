@@ -59,7 +59,7 @@ export function Hero() {
 
             <Link 
               href="/about" 
-              className="px-10 py-5 bg-transparent border-b-2 border-white/30 hover:border-white text-white font-bold transition-all text-center tracking-wider"
+              className="px-10 py-5 bg-transparent border border-white/30 hover:border-white text-white font-bold transition-all text-center tracking-wider"
             >
               Our Engineering Standards
             </Link>
