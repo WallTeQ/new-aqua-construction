@@ -33,12 +33,13 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.9] uppercase">
-            Constructing <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
-              The Future.
-            </span>
-          </h1>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.95] md:leading-[0.9] uppercase">
+  Constructing <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
+    The Future.
+  </span>
+</h1>
+          
 
           <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed">
             From complex civil engineering to sustainable urban development, 
