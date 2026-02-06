@@ -10,10 +10,10 @@ import { Menu, X } from "lucide-react"
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState("") // Track the #section
+  const [activeHash, setActiveHash] = useState("") 
   const pathname = usePathname()
 
-  // 1. Handle Scroll background
+  // 1. Safe Scroll handling
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -22,17 +22,19 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // 2. Handle Hash changes (the highlighting logic)
+  // 2. Safe Hash handling (The Fix for the blank page)
   useEffect(() => {
-    // Set initial hash
-    setActiveHash(window.location.hash || "#")
+    // We check if window is defined before accessing location
+    if (typeof window !== "undefined") {
+      setActiveHash(window.location.hash || "#")
 
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash)
+      const handleHashChange = () => {
+        setActiveHash(window.location.hash || "#")
+      }
+
+      window.addEventListener("hashchange", handleHashChange)
+      return () => window.removeEventListener("hashchange", handleHashChange)
     }
-
-    window.addEventListener("hashchange", handleHashChange)
-    return () => window.removeEventListener("hashchange", handleHashChange)
   }, [pathname])
 
   const navLinks = [
@@ -79,7 +81,6 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
-              // LOGIC: Check if the current hash matches the link href
               const linkHash = link.href === "/" ? "#" : link.href.replace("/", "")
               const isActive = (activeHash || "#") === linkHash
               
@@ -107,11 +108,45 @@ export function Navbar() {
           </div>
 
           {/* Mobile Button */}
-          <button className="md:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button className="md:hidden text-white p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-black border-b border-white/10 overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-6 flex flex-col gap-5">
+              {navLinks.map((link) => {
+                const linkHash = link.href === "/" ? "#" : link.href.replace("/", "")
+                const isActive = (activeHash || "#") === linkHash
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`text-sm font-black uppercase tracking-widest py-2 transition-colors ${
+                      isActive ? "text-blue-500 border-l-4 border-blue-500 pl-4" : "text-white/70 pl-4"
+                    }`}
+                    onClick={() => {
+                      setActiveHash(linkHash)
+                      setIsMobileMenuOpen(false)
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                )
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
