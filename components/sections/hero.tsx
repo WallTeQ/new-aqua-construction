@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ChevronDown } from "lucide-react" // Modern icons
+import { ArrowRight, ChevronDown } from "lucide-react"
 
 export function Hero() {
   return (
@@ -9,14 +9,23 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/New Bg.jpg" 
-          alt="NACOC Construction Site"
+          alt="NACC Construction Site" // Updated branding from NACOC to NACC
           fill
           priority
-          className="object-cover object-center scale-105 animate-slow-zoom" // Added slow zoom effect
+          className="object-cover object-center scale-105 animate-slow-zoom" 
         />
-        {/* 2. Layered Overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
-        <div className="absolute inset-0 bg-black/20 z-10" />
+        
+        {/* 2. Layered Overlays for depth & Header Visibility */}
+        <div className="absolute inset-0 z-10">
+          {/* Top-down shadow: Makes the white Navbar/Header pop against the sky */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-transparent to-transparent h-1/3" />
+          
+          {/* Left-to-right gradient: Ensures text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/40 to-transparent" />
+          
+          {/* General dimming layer */}
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
       </div>
 
       {/* 3. Hero Content */}
@@ -34,16 +43,15 @@ export function Hero() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.95] md:leading-[0.9] uppercase">
-  Constructing <br />
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
-    The Future.
-  </span>
-</h1>
-          
+            Constructing <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">
+              The Future.
+            </span>
+          </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed">
             From complex civil engineering to sustainable urban development, 
-            <span className="text-white font-medium"> NACC </span> delivers technically 
+            <span className="text-white font-bold"> NACC </span> delivers technically 
             superior infrastructure built for the next century.
           </p>
           
@@ -51,7 +59,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-5 items-center">
             <Link 
               href="/experience" 
-              className="group flex items-center gap-2 px-10 py-5 bg-blue-600 text-white font-extrabold rounded-sm transition-all hover:bg-blue-700 text-center uppercase tracking-wider"
+              className="group flex items-center gap-2 px-10 py-5 bg-blue-600 text-white font-extrabold rounded-sm transition-all hover:bg-blue-700 text-center uppercase tracking-wider w-full sm:w-auto"
             >
               Start Your Project
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
@@ -59,7 +67,7 @@ export function Hero() {
 
             <Link 
               href="/about" 
-              className="px-10 py-5 bg-transparent border border-white/30 hover:border-white text-white font-bold transition-all text-center tracking-wider"
+              className="px-10 py-5 bg-transparent border border-white/30 hover:border-white text-white font-bold transition-all text-center tracking-wider w-full sm:w-auto"
             >
               Our Engineering Standards
             </Link>
