@@ -43,6 +43,7 @@ export function Navbar() {
     { name: "Services", href: "/#services" },
     { name: "Experience", href: "/#experience" },
     { name: "Contact", href: "/#contact" },
+    { name: "Gallery", href: "/#gallery" },
   ]
 
   return (
