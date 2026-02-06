@@ -21,10 +21,10 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
-                src="/Logo.jpeg"
+                src="/footer logo.jpeg"
                 alt="NACC Logo"
-                width={48}
-                height={48}
+                width={30}
+                height={30}
                 className="h-12 w-auto"
               />
             </Link>
