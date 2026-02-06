@@ -51,14 +51,14 @@ export function About() {
                 <div className="text-sm text-muted-foreground">West African Leader</div>
               </motion.div>
 
-              {/* Card 3: 2024 */}
-              <motion.div 
-                whileHover={{ scale: 1.02 }} 
-                className="bg-primary p-8 rounded-2xl shadow-lg shadow-primary/20 flex flex-col justify-center min-h-[180px] transition-all"
-              >
-                <div className="text-3xl font-bold text-primary-foreground">2024</div>
-                <div className="text-sm text-primary-foreground/90 font-medium uppercase tracking-wider">New Beginning</div>
-              </motion.div>
+              {/* Card 3: 2024 - Updated to match the dark theme */}
+<motion.div 
+  whileHover={{ scale: 1.02 }} 
+  className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm flex flex-col justify-center min-h-[180px] transition-all hover:border-primary/50"
+>
+  <div className="text-3xl font-bold text-white">2024</div>
+  <div className="text-sm text-gray-400 font-medium uppercase tracking-wider">New Beginning</div>
+</motion.div>
 
               {/* Card 4: Legacy */}
               <motion.div

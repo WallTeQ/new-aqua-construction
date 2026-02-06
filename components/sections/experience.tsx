@@ -52,7 +52,8 @@ export function Experience() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               Experience & Capacity
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-8 text-balance">
+            {/* MADE HEADER BOLDER: font-black tracking-tighter */}
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-8 text-balance tracking-tighter uppercase">
               Trusted by Leading <span className="text-primary">Organizations</span>
             </h2>
 
@@ -63,7 +64,7 @@ export function Experience() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl bg-card border border-border"
+                  className="p-6 rounded-2xl bg-card border border-border transition-all hover:border-primary/50"
                 >
                   <stat.icon className="h-8 w-8 text-primary mb-3" />
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
@@ -81,9 +82,11 @@ export function Experience() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col justify-center"
           >
-            <h3 className="text-xl font-semibold text-foreground mb-6">Our Clients & Partners</h3>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              NACOC serves a diverse portfolio of clients and collaborates with engineering consultants, suppliers, and
+            {/* MADE HEADER BOLDER: font-black uppercase */}
+            <h3 className="text-2xl font-black text-foreground mb-6 uppercase tracking-tight">Our Clients & Partners</h3>
+            
+            <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
+              <span className="font-bold text-foreground">NACC</span> serves a diverse portfolio of clients and collaborates with engineering consultants, suppliers, and
               subcontractors to ensure technically compliant and efficient project delivery.
             </p>
 
@@ -94,18 +97,18 @@ export function Experience() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className="p-4 rounded-xl bg-secondary/50 text-center"
+                  className="p-4 rounded-xl bg-secondary/50 border border-border/50 text-center"
                 >
-                  <span className="text-sm font-medium text-foreground">{client}</span>
+                  <span className="text-sm font-bold text-foreground uppercase tracking-wide">{client}</span>
                 </motion.div>
               ))}
             </div>
 
-            <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
-              <h4 className="font-semibold mb-2">Quality Assurance</h4>
-              <p className="text-sm opacity-90">
-                We apply systematic inspection and testing, verification of workmanship, and strict compliance with ACI,
-                BS, and ASTM standards.
+            <div className="p-6 rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+              <h4 className="font-black uppercase tracking-wide mb-2">Quality Assurance</h4>
+              <p className="text-sm font-medium opacity-90 leading-relaxed">
+                We apply systematic inspection and testing, verification of workmanship, and strict compliance with 
+                <span className="font-bold underline decoration-white/30 underline-offset-4 ml-1">ACI, BS, and ASTM standards.</span>
               </p>
             </div>
           </motion.div>
